@@ -1,6 +1,6 @@
 <?php
 
-// INHERITANCE AND PROTECTED
+// OVERRIDE
 
 class Araba
 {
@@ -38,13 +38,21 @@ class Araba
 }
 
 class suvModel extends Araba{
+    public $marka = "değer atandı"; // bu şekilde aynı isimli değişkene değer atayarak da değişken override edilir.
     public $tasimaKapasitesi = 500;
     public function renkYazdir(){
         echo $this->renk;
     }
 
     public function __construct($renk,$marka,$yakitTipi,$tasimaKapasitesi){
+        $this->tasimaKapasitesi = $tasimaKapasitesi;
         parent::__construct($renk,$marka,$yakitTipi);
+    }
+    
+    public function arabaBilgileriniYazdir()
+    {
+        parent::arabaBilgileriniYazdir();
+        echo "Arabanın taşıma kapasitesi : ".$this->tasimaKapasitesi."<br/>";
     }
 }
 
